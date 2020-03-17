@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -34,11 +35,35 @@ public class gamePanel extends JPanel{
 	private JPanel center() {
 		// TODO Auto-generated method stub
 		JPanel p = new JPanel();
+		p.setBackground(Color.red);
+
 		p.setLayout(null);
-		JLabel l = new JLabel();
-		l.setBounds(350, 150, 100, 200);
-		l.setBorder(BorderFactory.createLineBorder(Color.red));
-		p.add(l);
+		JLabel lCard = new JLabel();
+		JLabel lNorth = new JLabel();
+		JLabel lSouth = new JLabel();
+		JLabel lWest = new JLabel();
+		JLabel lEast = new JLabel();
+		JButton bStart = new JButton("¿ªÊ¼ÓÎÏ·");
+		bStart.setBounds(500, 200, 100, 50);
+		bStart.setBackground(Color.red);
+		
+		lCard.setBounds(250, 150, 100, 200);
+		lCard.setBorder(BorderFactory.createLineBorder(Color.blue));
+		lNorth.setBounds(120, 30, 40, 40);
+		lNorth.setBorder(BorderFactory.createLineBorder(Color.red));
+		lSouth.setBounds(620, 470, 40, 40);
+		lSouth.setBorder(BorderFactory.createLineBorder(Color.red));
+		lEast.setBounds(710, 30, 40, 40);
+		lEast.setBorder(BorderFactory.createLineBorder(Color.red));
+		lWest.setBounds(50, 470, 40, 40);
+		lWest.setBorder(BorderFactory.createLineBorder(Color.red));
+		
+		p.add(lCard);
+		p.add(bStart);
+		p.add(lNorth);
+		p.add(lSouth);
+		p.add(lEast);
+		p.add(lWest);
 		return p;
 	}
 

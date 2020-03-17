@@ -1,6 +1,7 @@
 package gui.panel;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -41,6 +42,10 @@ public class startPanel extends JPanel{
 	private JPanel south() {
 		JPanel p = new JPanel();
 		p.setLayout(new GridLayout());
+		bSingle.setFont(new java.awt.Font("SimSun", 1, 40));
+		bSingle.setBackground(Color.red);
+		bDouble.setFont(new java.awt.Font("SimSun", 1, 40));
+		bDouble.setBackground(Color.red);
 		p.add(bSingle);
 		p.add(bDouble);
 		return p;
