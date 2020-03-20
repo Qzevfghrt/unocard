@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import gui.frame.MainFrame;
+import gui.panel.gamePanel;
 
 public class GUIUtil {
 
@@ -38,6 +39,7 @@ public class GUIUtil {
 			label[i] = l;
 			p.add(l);
 		}
+
 	}
 	
 	public static void useLNF() {

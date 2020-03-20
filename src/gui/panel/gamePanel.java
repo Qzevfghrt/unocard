@@ -8,12 +8,14 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import gui.listener.discardListener;
 import gui.listener.startGameListener;
 import util.GUIUtil;
 
@@ -28,13 +30,17 @@ public class gamePanel extends JPanel{
 	public JLabel westLabel[] = new JLabel[10];
 	public JLabel southLabel[] = new JLabel[10];
 	public JLabel northLabel[] = new JLabel[10];
-	
+
 	public JButton bStart = new JButton("¿ªÊ¼ÓÎÏ·");
+	
 	public JLabel lCard = new JLabel();
 	public JLabel lNorth = new JLabel();
 	public JLabel lSouth = new JLabel();
 	public JLabel lWest = new JLabel();
 	public JLabel lEast = new JLabel();
+	
+
+
 	
 	public gamePanel(){
 		this.setLayout(new BorderLayout());
@@ -106,11 +112,12 @@ public class gamePanel extends JPanel{
 	}
 
 
-	public JPanel south() {
+	public JPanel south(){
 		// TODO Auto-generated method stub
 		JPanel p = new JPanel();
 		p.setLayout(new FlowLayout());
 		GUIUtil.setLabel(p, 1, southLabel);
+		addSouthListener();
 		return p;
 	}
 
@@ -123,11 +130,11 @@ public class gamePanel extends JPanel{
 		return p;
 	}
 
-	public  void addSouthListener() {
+	public  void addSouthListener(){
 		for(int i = 0; i < 10; i++) {
 			JLabel l = southLabel[i];
-			l.add
-
+			discardListener listener = new discardListener();
+			l.addMouseListener(listener);
 		}
 	}
 	

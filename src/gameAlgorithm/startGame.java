@@ -1,6 +1,7 @@
 package gameAlgorithm;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,6 +22,8 @@ public class startGame {
     public static ArrayList<card> recordNorth = new ArrayList();
     public static ArrayList<card> recordWest = new ArrayList();
 	
+    public static HashMap<JLabel, card> record = new HashMap<>(); 
+    
     public static int turn = 1;
     
     //³õÊ¼»¯ÅÆ¿â
@@ -59,6 +62,7 @@ public class startGame {
 			JLabel l = gamePanel.instance.southLabel[i];
 			card c = gameUtil.selectCard(deck);
 			recordSouth.add(c);
+			record.put(l, c);
 			gameUtil.setCard(l, c, true);
 		}
 		
@@ -66,6 +70,7 @@ public class startGame {
 			JLabel l = gamePanel.instance.eastLabel[i];
 			card c = gameUtil.selectCard(deck);
 			recordEast.add(c);
+			record.put(l, c);
 			gameUtil.setCard(l, c, false);
 		}
 		
@@ -73,6 +78,7 @@ public class startGame {
 			JLabel l = gamePanel.instance.northLabel[i];
 			card c = gameUtil.selectCard(deck);
 			recordNorth.add(c);
+			record.put(l, c);
 			gameUtil.setCard(l, c, false);
 		}
 		
@@ -80,15 +86,11 @@ public class startGame {
 			JLabel l = gamePanel.instance.westLabel[i];
 			card c = gameUtil.selectCard(deck);
 			recordEast.add(c);
+			record.put(l, c);
 			gameUtil.setCard(l, c, false);
 		}
 		
 		gameUtil.selectTurn(turn);
-	}
-	
-	//³öÅÆ
-	public static void disCard() {
-		
 	}
 	
 

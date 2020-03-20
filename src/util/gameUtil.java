@@ -3,11 +3,13 @@ package util;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import card.*;
+import gameAlgorithm.startGame;
 import gui.panel.gamePanel;
 
 public class gameUtil {
@@ -53,9 +55,11 @@ public class gameUtil {
 			l.setOpaque(true);
 			l.setBackground(Color.BLACK);
 		}
-
-		
-		
+	}
+	
+	public static void resetCard(JLabel l) {
+		l.setOpaque(false);
+		l.setText("");
 	}
 	
 	public static card selectCard(ArrayList<card> deck) {
@@ -83,7 +87,36 @@ public class gameUtil {
 		}
 	}
 	
+	//³öÅÆ
 	public static void disCard(JLabel l) {
-		
+		if(startGame.record.containsKey(l)) {
+			card c = startGame.record.get(l);
+			startGame.record.remove(l);
+			resetCard(l);
+			gameUtil.setCard(gamePanel.instance.lCard, c, true);
+		}
 	}
+	
+	//µ÷ÕûÅÆÐò
+	public static void adjustCard(JLabel[] l) {
+		boolean flag = false;
+		if(Arrays.equals(l, gamePanel.instance.southLabel)) {
+			flag = true;
+		}
+
+		int count = 0;
+		card temp[] = new card[10];
+		for(int i = 0; i < 10; i++) {
+			if(startGame.record.containsKey(l[i])) {
+
+				temp[count++] = startGame.record.get(l[i]);
+			}
+		}
+		for(int i = 0; i < count; i++) {
+			setCard(l[i], temp[i], flag);
+		}
+		resetCard(l[count]);
+	}
+	
+
 }
