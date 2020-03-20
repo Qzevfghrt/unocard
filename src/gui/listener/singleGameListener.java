@@ -7,7 +7,7 @@ import gui.panel.gamePanel;
 import gui.panel.startPanel;
 import util.GUIUtil;
 
-public class startListener implements ActionListener{
+public class singleGameListener implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

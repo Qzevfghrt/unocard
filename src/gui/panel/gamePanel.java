@@ -7,12 +7,14 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import gui.listener.startGameListener;
 import util.GUIUtil;
 
 public class gamePanel extends JPanel{
@@ -21,6 +23,18 @@ public class gamePanel extends JPanel{
 		GUIUtil.useLNF();
 	}
 	public static gamePanel instance = new gamePanel();
+	
+	public JLabel eastLabel[] = new JLabel[10];
+	public JLabel westLabel[] = new JLabel[10];
+	public JLabel southLabel[] = new JLabel[10];
+	public JLabel northLabel[] = new JLabel[10];
+	
+	public JButton bStart = new JButton("开始游戏");
+	public JLabel lCard = new JLabel();
+	public JLabel lNorth = new JLabel();
+	public JLabel lSouth = new JLabel();
+	public JLabel lWest = new JLabel();
+	public JLabel lEast = new JLabel();
 	
 	public gamePanel(){
 		this.setLayout(new BorderLayout());
@@ -38,14 +52,13 @@ public class gamePanel extends JPanel{
 		p.setBackground(Color.red);
 
 		p.setLayout(null);
-		JLabel lCard = new JLabel();
-		JLabel lNorth = new JLabel();
-		JLabel lSouth = new JLabel();
-		JLabel lWest = new JLabel();
-		JLabel lEast = new JLabel();
-		JButton bStart = new JButton("开始游戏");
+		
+		
+		
 		bStart.setBounds(500, 200, 100, 50);
 		bStart.setBackground(Color.red);
+		//为开始游戏增加事件监听
+		addListener();
 		
 		lCard.setBounds(250, 150, 100, 200);
 		lCard.setBorder(BorderFactory.createLineBorder(Color.blue));
@@ -68,41 +81,55 @@ public class gamePanel extends JPanel{
 	}
 
 
-	private JPanel east() {
+	public void addListener() {
+		// TODO Auto-generated method stub
+		startGameListener l = new startGameListener();
+		bStart.addActionListener(l);
+	}
+
+
+	public JPanel east() {
 		// TODO Auto-generated method stub
 		JPanel p = new JPanel();
 		p.setLayout(new GridLayout(10, 1));
-		GUIUtil.setLabel(p, 2);
+		GUIUtil.setLabel(p, 2, eastLabel);
 		return p;
 	}
 
 
-	private JPanel west() {
+	public JPanel west() {
 		// TODO Auto-generated method stub
 		JPanel p = new JPanel();
 		p.setLayout(new GridLayout(10,1));
-		GUIUtil.setLabel(p, 2);
+		GUIUtil.setLabel(p, 2, westLabel);
 		return p;
 	}
 
 
-	private JPanel south() {
+	public JPanel south() {
 		// TODO Auto-generated method stub
 		JPanel p = new JPanel();
 		p.setLayout(new FlowLayout());
-		GUIUtil.setLabel(p, 1);
+		GUIUtil.setLabel(p, 1, southLabel);
 		return p;
 	}
 
 
-	private JPanel north() {
+	public JPanel north() {
 		// TODO Auto-generated method stub
 		JPanel p = new JPanel();
 		p.setLayout(new FlowLayout());
-		GUIUtil.setLabel(p, 1);
+		GUIUtil.setLabel(p, 1, northLabel);
 		return p;
 	}
 
+	public  void addSouthListener() {
+		for(int i = 0; i < 10; i++) {
+			JLabel l = southLabel[i];
+			l.add
+
+		}
+	}
 	
 
 	public static void main(String[] args) {

@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import gui.frame.MainFrame;
-import gui.listener.startListener;
+import gui.listener.singleGameListener;
 import util.GUIUtil;
 
 public class startPanel extends JPanel{
@@ -52,7 +52,7 @@ public class startPanel extends JPanel{
 	}
 	
 	public void addListener() {
-		startListener l = new startListener();
+		singleGameListener l = new singleGameListener();
 		bSingle.addActionListener(l);
 	}
 	

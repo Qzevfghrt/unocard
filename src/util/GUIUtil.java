@@ -27,7 +27,7 @@ public class GUIUtil {
 		MainFrame.instance.setVisible(true);
 	}
 	
-	public static void setLabel(JPanel p, int flag) {
+	public static void setLabel(JPanel p, int flag, JLabel label[]) {
 		for(int i = 0; i < 10; i++) {
 			JLabel l = new JLabel("");
 			if(flag == 1)
@@ -35,6 +35,7 @@ public class GUIUtil {
 			else 
 				l.setPreferredSize(new Dimension(100, 50));
 			l.setBorder(BorderFactory.createLineBorder(Color.blue));
+			label[i] = l;
 			p.add(l);
 		}
 	}
