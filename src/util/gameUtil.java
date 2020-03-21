@@ -94,6 +94,7 @@ public class gameUtil {
 			startGame.record.remove(l);
 			resetCard(l);
 			gameUtil.setCard(gamePanel.instance.lCard, c, true);
+			startGame.record.put(gamePanel.instance.lCard, c);
 		}
 	}
 	
@@ -105,16 +106,24 @@ public class gameUtil {
 		}
 
 		int count = 0;
-		card temp[] = new card[10];
 		for(int i = 0; i < 10; i++) {
-			if(startGame.record.containsKey(l[i])) {
+			if(startGame.record.containsKey(l[i]))
+				count++;
+		}
+		for(int i = 0; i < 10; i++) {
+			if(!startGame.record.containsKey(l[i])) {
 
-				temp[count++] = startGame.record.get(l[i]);
+				for(int j = i; j < count; j++) {
+
+					card c = startGame.record.get(l[j + 1]);
+					startGame.record.put(l[j], c);
+					setCard(l[j], c, flag);
+				}
+				
+				break;
 			}
 		}
-		for(int i = 0; i < count; i++) {
-			setCard(l[i], temp[i], flag);
-		}
+		startGame.record.remove(l[count]);
 		resetCard(l[count]);
 	}
 	

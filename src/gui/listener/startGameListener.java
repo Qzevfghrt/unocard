@@ -13,6 +13,7 @@ public class startGameListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		gameUtil.resetCard(gamePanel.instance.lCard);
+		startGame.record.remove(gamePanel.instance.lCard);
 		startGame.shuffleCard();
 		startGame.dealCards();
 	}
