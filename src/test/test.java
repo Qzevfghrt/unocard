@@ -1,5 +1,8 @@
 package test;
 
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,9 +15,13 @@ public class test {
 		JFrame f = new JFrame("uno");
 		f.setBounds(200, 200, 1000, 800);
 		JLabel l = new JLabel();
-		ImageIcon i = new ImageIcon("d:/software/project/unocard/img/uno.jpg");
-		l.setBounds(50, 50, 500, 400);
-		l.setIcon(i);
+
+		l.setBounds(50, 50, 200, 400);
+
+		l.setBorder(BorderFactory.createLineBorder(Color.black));
+		l.setOpaque(true);
+		l.setBackground(Color.RED);
+
 		f.add(l);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);

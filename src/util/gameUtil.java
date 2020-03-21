@@ -15,6 +15,7 @@ import gui.panel.gamePanel;
 public class gameUtil {
 
 	public static void setCard(JLabel l, card c, boolean flag) {
+		flag = true;
 		if(flag == true) {
 			if(c instanceof numberCard) {
 				int number = ((numberCard) c).number;
@@ -54,6 +55,7 @@ public class gameUtil {
 		}else if(flag == false) {
 			l.setOpaque(true);
 			l.setBackground(Color.BLACK);
+			
 		}
 	}
 	
@@ -75,16 +77,30 @@ public class gameUtil {
 		l.setBackground(Color.RED);
 	}
 	
+	public static void closeTurn(JLabel l1, JLabel l2, JLabel l3) {
+		l1.setOpaque(false);
+		l2.setOpaque(false);
+		l3.setOpaque(false);
+		l1.setBackground(Color.WHITE);
+		l2.setBackground(Color.WHITE);
+		l3.setBackground(Color.WHITE);
+	}
+	
 	public static void selectTurn(int turn) {
 		if(turn == 1) {
 			showTurn(gamePanel.instance.lSouth);
+			closeTurn(gamePanel.instance.lEast, gamePanel.instance.lNorth, gamePanel.instance.lWest);
 		}else if(turn == 2) {
 			showTurn(gamePanel.instance.lEast);
+			closeTurn(gamePanel.instance.lSouth, gamePanel.instance.lNorth, gamePanel.instance.lWest);
 		}else if(turn == 3) {
 			showTurn(gamePanel.instance.lNorth);
+			closeTurn(gamePanel.instance.lSouth, gamePanel.instance.lEast, gamePanel.instance.lWest);
 		}else if(turn == 4) {
 			showTurn(gamePanel.instance.lWest);
+			closeTurn(gamePanel.instance.lEast, gamePanel.instance.lNorth, gamePanel.instance.lSouth);
 		}
+		
 	}
 	
 	//³öÅÆ
@@ -93,6 +109,7 @@ public class gameUtil {
 			card c = startGame.record.get(l);
 			startGame.record.remove(l);
 			resetCard(l);
+			
 			gameUtil.setCard(gamePanel.instance.lCard, c, true);
 			startGame.record.put(gamePanel.instance.lCard, c);
 		}
@@ -128,4 +145,46 @@ public class gameUtil {
 	}
 	
 
+	public static boolean isEmpty(JLabel[] l) {
+		int length = 0;
+		for(int i = 0; i < 10; i++) {
+			if(startGame.record.containsKey(l[i])) {
+				length++;
+			}
+		}
+		if(length == 0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+
+	
+	public static boolean isColorEqual(card c) {
+		card lcard;
+		if(startGame.record.containsKey(gamePanel.instance.lCard)) {
+		    lcard = startGame.record.get(gamePanel.instance.lCard);
+		}else {
+			return false;
+		}
+		
+		if(c.color != lcard.color) {
+			return false;
+		}
+		return true;
+	}
+	
+	public static JLabel findEmpty(JLabel[] l) {
+		for(int i = 0; i < 10; i++) {
+			if(!startGame.record.containsKey(l[i])) {
+				return l[i];
+			}
+		}
+		return null;
+		
+	}
+	
+
+	
 }
